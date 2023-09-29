@@ -1,0 +1,24 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TIenHaiMGM/personal-portfolio.git"
+  },
+  "author": "TienHai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TIenHaiMGM/personal-portfolio/issues"
+  },
+  "homepage": "https://github.com/TIenHaiMGM/personal-portfolio#readme",
+  "dependencies": {
+    "sass": "^1.68.0",
+    "vite": "^4.4.9"
+  }
+}
