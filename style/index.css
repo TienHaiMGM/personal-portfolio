@@ -36,6 +36,14 @@ body {
     transform: none;
   }
 }
+@keyframes changeColor {
+  from {
+    background: linear-gradient(90deg, rgb(34, 193, 195) 0%, rgb(253, 187, 45) 100%);
+  }
+  to {
+    background: linear-gradient(90deg, rgb(253, 187, 45) 0%, rgb(253, 187, 45) 50%, rgb(34, 193, 195) 100%);
+  }
+}
 /*HEADER*/
 .header {
   width: 100%;
@@ -128,6 +136,11 @@ body {
 .social__item {
   list-style: none;
   font-size: 2rem;
+  transition: 0.3;
+}
+.social__item:hover {
+  transform: scale(1.2);
+  border: none;
 }
 .social__link {
   color: white;
@@ -442,6 +455,7 @@ body {
   opacity: 0.8;
   transition: all ease-in-out 0.3s;
   background-color: dodgerblue;
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
 }
 @media (max-width: 768px) {
   .soft-skills__title, .hard-skills__title {
@@ -466,6 +480,9 @@ body {
   .soft-skills__content--text, .hard-skills__content--text {
     width: 100%;
   }
+}
+.soft-skills__content--text:hover, .hard-skills__content--text:hover {
+  transform: scale(1.1);
 }
 
 .hard-skills__title {
@@ -498,6 +515,7 @@ body {
 .hire-me__link:hover .hire-me__button {
   border: none;
   background-color: white;
+  transform: scale(1.1);
 }
 
 /*FOOTER*/
@@ -514,13 +532,13 @@ body {
   right: 50px;
   opacity: 0;
   visibility: hidden;
+  transition: 0.5s;
 }
 .button-to-up__link {
   color: white;
   background-color: #333333;
   border-radius: 50%;
   padding: 18px;
-  transition: 0.5s;
   z-index: 999;
 }
 .active {
