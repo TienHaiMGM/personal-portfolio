@@ -1,0 +1,545 @@
+@use "breakpoints";
+
+$color_white: white;
+$color-light: #9e9c9c;
+$title-margin-top: 80px;
+$animation-fadeOut: fadeOut 1s ease 0.3s 1 alternate;
+/*ROOT*/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+::selection {
+  color: #333333;
+  background: yellow;
+}
+//KeyFrames
+@keyframes fadeOut {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+/*HEADER*/
+.header {
+  & {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../image/cover_background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  &__background {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 144, 0, 0.9);
+  }
+  &__image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transition: 0.3s;
+    border: 2px dotted white;
+  }
+  &__image:hover {
+    width: 300px;
+    height: 300px;
+  }
+  &__title {
+    font-family: "Kaushan Script", cursive;
+    font-size: 3rem;
+    text-align: center;
+    letter-spacing: 5px;
+    color: $color_white;
+    transform: skew(5deg, -5deg);
+    margin-top: 25px;
+    position: relative;
+
+    @include breakpoints.xm {
+      font-size: 2.5rem;
+    }
+  }
+  &__title::before {
+    content: " ";
+    background-color: $color_white;
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    bottom: 0px;
+    transform: rotate(90deg);
+    left: -50px;
+
+    @include breakpoints.xm {
+      opacity: 0;
+    }
+  }
+  &__title::after {
+    content: " ";
+    background-color: $color_white;
+    width: 5px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    bottom: 0px;
+    transform: rotate(90deg);
+    right: -50px;
+
+    @include breakpoints.xm {
+      opacity: 0;
+    }
+  }
+  &__description {
+    color: $color_white;
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin: 25px 0px;
+  }
+}
+
+/*SOCIAL*/
+.social {
+  & {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+  &__item {
+    list-style: none;
+    font-size: 2rem;
+  }
+  &__link {
+    color: $color_white;
+  }
+}
+.background-icon {
+  background-color: #2f3c4f;
+  height: 40px;
+  width: 40px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/*MAIN*/
+
+//About Me
+.about-me {
+  & {
+    font-family: "Space Mono", Arial, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 65rem;
+    height: 100%;
+    margin: $title-margin-top auto;
+    padding: 0px 50px;
+    @include breakpoints.xm {
+      padding: 0px 10px;
+    }
+  }
+  &__content {
+    margin-top: $title-margin-top;
+    display: flex;
+    gap: 50px;
+    flex-direction: row;
+    @include breakpoints.lg {
+      flex-direction: column;
+    }
+  }
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  &__information {
+    list-style: none;
+    text-align: left;
+    width: 100%;
+    height: 14rem;
+    font-size: 1.1rem;
+  }
+  &__information--font-weight--bold {
+    font-weight: 600;
+    padding-right: 20px;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+  &__information--font-weight--light {
+    font-weight: 200;
+    color: $color-light;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+  &__introduction {
+  }
+  &__introduction-title {
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top: -20px;
+  }
+  &__introduction-content {
+    margin-bottom: 30px;
+  }
+  &__social {
+    margin: 0 auto;
+  }
+}
+
+//My Resume
+.my-resume {
+  & {
+    @extend .about-me;
+    animation: $animation-fadeOut;
+    @include breakpoints.xm {
+      padding-left: 50px;
+    }
+  }
+  &__title {
+    @extend .about-me__title;
+  }
+  &__education {
+    margin-top: $title-margin-top;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  &__work-experience {
+    position: relative;
+    margin-top: $title-margin-top;
+  }
+  &__education::before,
+  &__work-experience::before {
+    content: " ";
+    width: 2px;
+    background-color: #e6e6e6;
+    position: absolute;
+    top: 0;
+    bottom: -80px;
+    left: 50%;
+    z-index: -1;
+    @include breakpoints.md {
+      left: 20%;
+    }
+    @include breakpoints.xm {
+      left: 0;
+    }
+  }
+  &__sub-title {
+    font-size: 1rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    background-color: #e0e0e0;
+    width: fit-content;
+    text-align: left;
+    margin: 0px auto 50px;
+    padding: 5px;
+    border-radius: 5px;
+    @include breakpoints.xm {
+      margin-left: -20px;
+    }
+  }
+  &__content {
+    position: relative;
+    margin-bottom: 50px;
+    @include breakpoints.xl {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+    @include breakpoints.xm {
+      margin-right: 0px;
+    }
+  }
+  &__content-wrap {
+    width: 50%;
+    margin: 0 -50px;
+    @include breakpoints.md {
+      width: 80%;
+    }
+    @include breakpoints.xm {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  &__content-title {
+    font-weight: 400;
+    padding-bottom: 20px;
+  }
+  &__content-time {
+    color: $color-light;
+    padding-bottom: 20px;
+  }
+  &__content-description {
+  }
+  &__content-icon {
+    display: table;
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+    background-color: #ff9000;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 22px);
+    @include breakpoints.md {
+      left: -50px;
+    }
+    @include breakpoints.xm {
+      left: -72px;
+    }
+    .icon-suitcase {
+      display: table-cell;
+      vertical-align: middle;
+      color: white;
+    }
+  }
+}
+
+.align-right {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.align-left {
+  display: flex;
+  text-align: right;
+  flex-direction: column;
+  align-items: flex-start;
+  @include breakpoints.md {
+    align-items: flex-end;
+  }
+  @include breakpoints.xm {
+    text-align: left;
+  }
+}
+
+//My Projects
+.my-projects {
+  & {
+    font-family: "Space Mono", Arial, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    height: 100%;
+    color: white;
+    background-color: #ff9000;
+    padding-top: $title-margin-top;
+    padding-bottom: 100px;
+  }
+  &__title {
+    @extend .about-me__title;
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: space-evenly;
+    align-content: space-around;
+    margin: $title-margin-top auto 0;
+    padding: 0 15px;
+    gap: 20px;
+    max-width: 65rem;
+    @include breakpoints.xm {
+      grid-template-columns: repeat(auto-fill, 1fr);
+    }
+  }
+  &__item {
+    position: relative;
+  }
+  &__item-link {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  &__item-name {
+  }
+  &__item-image {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    @include breakpoints.xm {
+      width: 100%;
+      height: 300px;
+    }
+  }
+  &__item-description {
+    position: absolute;
+    top: 40.8px;
+    background-color: white;
+    color: black;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: all ease 0.3s;
+    @include breakpoints.xm {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__item:hover &__item-description {
+    opacity: 1;
+  }
+}
+//SKILL
+.my-skills {
+  & {
+    @extend .about-me;
+    animation: $animation-fadeOut;
+  }
+  &__title {
+    @extend .about-me__title;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: $title-margin-top;
+    gap: 50px;
+    @include breakpoints.md {
+      flex-direction: column;
+    }
+  }
+}
+.soft-skills {
+  & {
+  }
+  &__title {
+    font-weight: 500;
+    text-align: center;
+    padding: 20px;
+    width: 30vw;
+    color: white;
+    border-radius: 5px;
+    opacity: 0.8;
+    transition: all ease-in-out 0.3s;
+    background-color: dodgerblue;
+    @include breakpoints.md {
+      width: 100%;
+    }
+  }
+  &__title:hover {
+    opacity: 1;
+  }
+  &__content {
+  }
+  &__content--text {
+    text-align: center;
+    font-weight: 600;
+    padding: 10px 0;
+    border-radius: 5px;
+    word-wrap: normal;
+    color: white;
+    margin-top: 20px;
+    width: 30vw;
+    background: linear-gradient(
+      90deg,
+      rgba(34, 193, 195, 1) 0%,
+      rgba(253, 187, 45, 1) 100%
+    );
+    @include breakpoints.md {
+      width: 100%;
+    }
+  }
+}
+
+.hard-skills {
+  & {
+  }
+  &__title {
+    @extend .soft-skills__title;
+    background-color: orange;
+  }
+  &__content {
+  }
+  &__content--text {
+    @extend .soft-skills__content--text;
+    background: linear-gradient(90deg, #da81f0 0%, #1c7fc7 100%);
+  }
+}
+//Hire me!
+.hire-me {
+  & {
+    @extend .my-projects;
+  }
+  &__title {
+    @extend .about-me__title;
+  }
+  &__description {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  &__link {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+  }
+  &__button {
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #ff9000;
+    border-radius: 25px;
+    border: none;
+    padding: 15px;
+    width: 200px;
+    cursor: pointer;
+  }
+  &__link:hover &__button {
+    border: none;
+    background-color: white;
+  }
+}
+
+/*FOOTER*/
+.footer-copyright {
+  font-family: "Space Mono", Arial, serif;
+  text-align: center;
+  margin: 10px;
+  color: #9e9c9c;
+}
+
+.button-to-up {
+  & {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  &__link {
+    color: white;
+    background-color: #333333;
+    border-radius: 50%;
+    padding: 18px;
+    transition: 0.5s;
+    z-index: 999;
+  }
+  &__icon {
+  }
+}
+.active {
+  opacity: 1;
+  visibility: visible;
+}
